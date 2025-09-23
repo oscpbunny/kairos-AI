@@ -1,0 +1,25 @@
+# Kairos ADO - Lightweight Dockerfile
+# Defines a lightweight container image for quick setup
+
+FROM python:3.11-slim
+
+# Set the working directory in the container
+WORKDIR /kairos
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy the lightweight requirements file
+COPY requirements-light.txt .
+
+# Install core packages first
+RUN pip install --no-cache-dir -r requirements-light.txt
+
+# Copy the entire project
+COPY . .
+
+# Default command (will be overridden by docker-compose)
+CMD ["python", "-c", "print('Kairos container ready')"]

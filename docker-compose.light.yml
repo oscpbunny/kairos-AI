@@ -1,0 +1,51 @@
+services:
+  postgres:
+    image: postgres:13
+    container_name: kairos_postgres
+    environment:
+      POSTGRES_USER: kairos
+      POSTGRES_PASSWORD: kairos_password
+      POSTGRES_DB: kairos
+    ports:
+      - "5432:5432"
+    volumes:
+      - kairos_db_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2
+    container_name: kairos_redis
+    ports:
+      - "6379:6379"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.light
+    container_name: kairos_api_light
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      POSTGRES_HOST: postgres
+      REDIS_HOST: redis
+      POSTGRES_USER: kairos
+      POSTGRES_PASSWORD: kairos_password
+      POSTGRES_DB: kairos
+    ports:
+      - "8000:8000"
+      - "50051:50051"
+    command: python -c "import time; print('Kairos API started'); [time.sleep(60) for _ in iter(int, 1)]"
+
+  vision-board:
+    build:
+      context: .
+      dockerfile: Dockerfile.light
+    container_name: kairos_vision_board_light
+    depends_on:
+      - api
+    stdin_open: true
+    tty: true
+    command: python -c "import time; print('Vision Board started'); [time.sleep(30) for _ in iter(int, 1)]"
+
+volumes:
+  kairos_db_data:

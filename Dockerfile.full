@@ -1,0 +1,109 @@
+# Kairos ADO - Full System Dockerfile
+# Multi-stage build for optimized container size
+
+FROM python:3.11-slim AS base
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    libhdf5-dev \
+    pkg-config \
+    gcc \
+    g++ \
+    gfortran \
+    libblas-dev \
+    liblapack-dev \
+    libopenblas-dev \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set work directory
+WORKDIR /kairos
+
+# Copy and install Python dependencies in stages
+COPY requirements.txt .
+
+# Install lighter dependencies first
+RUN pip install --no-cache-dir \
+    asyncpg \
+    fastapi \
+    grpcio \
+    grpcio-tools \
+    httpx \
+    psycopg2-binary \
+    python-dotenv \
+    redis \
+    rich \
+    uvicorn \
+    websockets \
+    PyYAML \
+    boto3 \
+    graphene \
+    starlette \
+    pandas \
+    aiohttp \
+    aiofiles \
+    asyncio-mqtt \
+    requests \
+    click \
+    tqdm \
+    schedule
+
+# Install scientific computing packages
+RUN pip install --no-cache-dir \
+    numpy \
+    scipy \
+    scikit-learn \
+    statsmodels \
+    plotly
+
+# Install ML packages (these are the heavy ones)
+RUN pip install --no-cache-dir \
+    --timeout=1000 \
+    torch --index-url https://download.pytorch.org/whl/cpu
+
+RUN pip install --no-cache-dir \
+    --timeout=1000 \
+    tensorflow-cpu
+
+RUN pip install --no-cache-dir \
+    transformers \
+    strawberry-graphql[fastapi]
+
+# Install remaining packages
+RUN pip install --no-cache-dir \
+    pytest \
+    pytest-asyncio \
+    black \
+    flake8 \
+    mypy \
+    prometheus-client \
+    opentelemetry-api \
+    opentelemetry-sdk \
+    cryptography \
+    pyjwt \
+    toml
+
+# Copy application code
+COPY . .
+
+# Create non-root user
+RUN useradd --create-home --shell /bin/bash kairos && \
+    chown -R kairos:kairos /kairos
+
+USER kairos
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=30s --start-period=60s --retries=3 \
+    CMD python -c "import requests; requests.get('http://localhost:8000/health', timeout=10)" || exit 1
+
+# Default command
+CMD ["python", "api/launcher.py"]

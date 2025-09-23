@@ -1,0 +1,151 @@
+# Enhanced Prometheus Configuration for Kairos Phase 6
+# Production-ready monitoring and alerting setup
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    environment: 'production'
+    cluster: 'kairos-primary'
+
+# Rule files for alerting
+rule_files:
+  - "alert_rules.yml"
+  - "kairos_rules.yml"
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+    scrape_interval: 5s
+    metrics_path: /metrics
+
+  # Kairos API Server
+  - job_name: 'kairos-api'
+    static_configs:
+      - targets: ['localhost:8000']
+    scrape_interval: 10s
+    metrics_path: /api/v1/metrics
+    scrape_timeout: 10s
+    basic_auth:
+      username: 'admin'
+      password: 'admin123'  # Use secrets in production
+    params:
+      format: ['prometheus']
+
+  # Kairos Agents Health Checks
+  - job_name: 'kairos-agents'
+    static_configs:
+      - targets: ['localhost:8000']
+    scrape_interval: 30s
+    metrics_path: /api/v1/health
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: 'kairos_.*'
+        action: keep
+
+  # System metrics (Node Exporter)
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['localhost:9100']
+    scrape_interval: 15s
+
+  # Database metrics (PostgreSQL)
+  - job_name: 'postgres-exporter'
+    static_configs:
+      - targets: ['localhost:9187']
+    scrape_interval: 30s
+
+  # Redis metrics
+  - job_name: 'redis-exporter'
+    static_configs:
+      - targets: ['localhost:9121']
+    scrape_interval: 30s
+
+  # Docker containers
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['localhost:8080']
+    scrape_interval: 15s
+    metrics_path: /metrics
+
+  # Custom application metrics
+  - job_name: 'kairos-oracle'
+    static_configs:
+      - targets: ['localhost:8001']  # Oracle Engine metrics endpoint
+    scrape_interval: 20s
+    honor_labels: true
+
+  # Infrastructure monitoring
+  - job_name: 'kairos-infrastructure'
+    static_configs:
+      - targets: ['localhost:8002']  # Infrastructure agent metrics
+    scrape_interval: 60s
+
+# Storage configuration
+storage:
+  tsdb:
+    retention.time: 30d
+    retention.size: 10GB
+    path: /prometheus/data
+
+# Remote write for long-term storage (optional)
+# remote_write:
+#   - url: "https://prometheus-remote-write.example.com/api/v1/write"
+#     basic_auth:
+#       username: "your-username"
+#       password: "your-password"
+
+# Recording rules for performance
+recording_rules:
+  - name: kairos.rules
+    interval: 30s
+    rules:
+      # API request rate
+      - record: kairos:api_request_rate
+        expr: rate(kairos_api_requests_total[5m])
+      
+      # Agent response time percentiles
+      - record: kairos:agent_response_time_p95
+        expr: histogram_quantile(0.95, rate(kairos_agent_response_time_seconds_bucket[5m]))
+      
+      # Oracle prediction accuracy
+      - record: kairos:oracle_prediction_accuracy
+        expr: avg_over_time(kairos_oracle_prediction_confidence[1h])
+      
+      # System resource utilization
+      - record: kairos:cpu_utilization
+        expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
+      
+      # Memory utilization
+      - record: kairos:memory_utilization
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100
+
+# Web configuration
+web:
+  listen_address: ':9090'
+  external_url: 'http://localhost:9090'
+  enable_lifecycle: true
+  enable_admin_api: true
+  console:
+    templates: '/etc/prometheus/consoles'
+    libraries: '/etc/prometheus/console_libraries'
+
+# Log level configuration
+log_level: info
+log_format: json
+
+# Query configuration
+query:
+  max_concurrency: 20
+  timeout: 2m
+  max_samples: 50000000

@@ -1,0 +1,91 @@
+services:
+  postgres:
+    image: postgres:13
+    container_name: kairos_postgres_api
+    environment:
+      POSTGRES_USER: kairos
+      POSTGRES_PASSWORD: kairos_password
+      POSTGRES_DB: kairos
+    ports:
+      - "5432:5432"
+    volumes:
+      - kairos_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kairos -d kairos"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  redis:
+    image: redis:6.2
+    container_name: kairos_redis_api
+    ports:
+      - "6379:6379"
+    volumes:
+      - kairos_redis_data:/data
+    command: redis-server --appendonly yes --maxmemory 1gb --maxmemory-policy allkeys-lru
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.light
+    container_name: kairos_api_server
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USER=kairos
+      - POSTGRES_PASSWORD=kairos_password
+      - POSTGRES_DB=kairos
+      - POSTGRES_PORT=5432
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - KAIROS_ENV=production
+      - LOG_LEVEL=INFO
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - GRPC_PORT=50051
+    ports:
+      - "8000:8000"
+      - "50051:50051"
+    volumes:
+      - ./logs:/kairos/logs
+    command: >
+      sh -c "
+        echo '🚀 Starting Kairos API Server...' &&
+        mkdir -p /kairos/logs &&
+        echo '📊 Database: postgres:5432' &&
+        echo '🔄 Redis: redis:6379' &&
+        echo '🌐 GraphQL: http://localhost:8000/graphql' &&
+        echo '⚡ gRPC: localhost:50051' &&
+        echo 'Waiting for dependencies...' &&
+        python -c 'import time; time.sleep(10)' &&
+        echo 'Starting API Launcher...' &&
+        python api/launcher.py
+      "
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 1G
+
+volumes:
+  kairos_db_data:
+  kairos_redis_data:
+
+networks:
+  default:
+    name: kairos_api_network
+    driver: bridge

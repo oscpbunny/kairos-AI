@@ -1,0 +1,71 @@
+# Production Dockerfile for Kairos API Server
+# Phase 6 - Production Excellence
+
+FROM python:3.11-slim as base
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH="/app" \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Create non-root user for security
+RUN groupadd -r kairos && useradd -r -g kairos kairos
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set work directory
+WORKDIR /app
+
+# Copy requirements first for better caching
+COPY requirements.txt requirements-api.txt* ./
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt && \
+    if [ -f requirements-api.txt ]; then pip install --no-cache-dir -r requirements-api.txt; fi
+
+# Copy application code
+COPY --chown=kairos:kairos . .
+
+# Create necessary directories
+RUN mkdir -p logs data && \
+    chown -R kairos:kairos /app
+
+# Security: Remove unnecessary packages and files
+RUN apt-get remove -y build-essential git && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Switch to non-root user
+USER kairos
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000/api/v1/health || exit 1
+
+# Expose port
+EXPOSE 8000
+
+# Production stage
+FROM base as production
+
+# Start the application
+CMD ["python", "-m", "uvicorn", "api.server_complete:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+
+# Development stage
+FROM base as development
+
+# Install development dependencies
+RUN pip install --no-cache-dir pytest pytest-asyncio pytest-cov black flake8 mypy
+
+# Start with reload for development
+CMD ["python", "-m", "uvicorn", "api.server_complete:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: postgres:13
+    container_name: kairos_postgres
+    environment:
+      POSTGRES_USER: kairos
+      POSTGRES_PASSWORD: kairos_password
+      POSTGRES_DB: kairos
+    ports:
+      - "5432:5432"
+    volumes:
+      - kairos_db_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2
+    container_name: kairos_redis
+    ports:
+      - "6379:6379"
+
+  api:
+    build: .
+    container_name: kairos_api
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      POSTGRES_HOST: postgres
+      REDIS_HOST: redis
+    ports:
+      - "8000:8000"
+      - "50051:50051"
+    command: python api/launcher.py
+
+  vision-board:
+    build: .
+    container_name: kairos_vision_board
+    depends_on:
+      - api
+    stdin_open: true # Equivalent to -i in docker run
+    tty: true        # Equivalent to -t in docker run
+    command: python tui/vision_board.py
+
+volumes:
+  kairos_db_data:

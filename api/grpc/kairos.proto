@@ -1,0 +1,579 @@
+// Project Kairos: gRPC Service Definitions
+// High-performance inter-agent communication protocol
+// Version: 1.0
+
+syntax = "proto3";
+
+package kairos;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+
+// ====================================================
+// CORE DATA TYPES
+// ====================================================
+
+// Agent information
+message Agent {
+  string id = 1;
+  string name = 2;
+  string specialization = 3;
+  AgentType agent_type = 4;
+  int64 cognitive_cycles_balance = 5;
+  int32 total_tasks_completed = 6;
+  int64 total_cc_earned = 7;
+  double reputation_score = 8;
+  double cost_efficiency_score = 9;
+  google.protobuf.Struct capabilities = 10;
+  HardwareType hardware_preference = 11;
+  bool is_active = 12;
+  google.protobuf.Timestamp last_heartbeat = 13;
+  google.protobuf.Timestamp created_at = 14;
+}
+
+enum AgentType {
+  AGENT_TYPE_UNKNOWN = 0;
+  AGENT_TYPE_STEWARD = 1;
+  AGENT_TYPE_ARCHITECT = 2;
+  AGENT_TYPE_ENGINEER = 3;
+  AGENT_TYPE_STRATEGIST = 4;
+  AGENT_TYPE_EMPATHY = 5;
+  AGENT_TYPE_ETHICIST = 6;
+  AGENT_TYPE_QA = 7;
+}
+
+enum HardwareType {
+  HARDWARE_TYPE_ANY = 0;
+  HARDWARE_TYPE_CPU = 1;
+  HARDWARE_TYPE_GPU = 2;
+  HARDWARE_TYPE_TPU = 3;
+}
+
+// Task information
+message Task {
+  string id = 1;
+  string decision_id = 2;
+  string venture_id = 3;
+  string title = 4;
+  string description = 5;
+  TaskType task_type = 6;
+  int32 complexity_level = 7;
+  int64 cc_bounty = 8;
+  int64 bonus_cc = 9;
+  double urgency_multiplier = 10;
+  TaskStatus status = 11;
+  string assigned_agent_id = 12;
+  string created_by_agent_id = 13;
+  double quality_score = 14;
+  google.protobuf.Struct required_capabilities = 15;
+  HardwareType preferred_hardware = 16;
+  google.protobuf.Struct deliverables = 17;
+  google.protobuf.Struct actual_deliverables = 18;
+  google.protobuf.Duration estimated_duration = 19;
+  google.protobuf.Duration actual_duration = 20;
+  google.protobuf.Timestamp created_at = 21;
+  google.protobuf.Timestamp bidding_ends_at = 22;
+  google.protobuf.Timestamp started_at = 23;
+  google.protobuf.Timestamp completed_at = 24;
+}
+
+enum TaskType {
+  TASK_TYPE_UNKNOWN = 0;
+  TASK_TYPE_ANALYSIS = 1;
+  TASK_TYPE_DEVELOPMENT = 2;
+  TASK_TYPE_TESTING = 3;
+  TASK_TYPE_DEPLOYMENT = 4;
+  TASK_TYPE_RESEARCH = 5;
+  TASK_TYPE_OPTIMIZATION = 6;
+  TASK_TYPE_MONITORING = 7;
+}
+
+enum TaskStatus {
+  TASK_STATUS_UNKNOWN = 0;
+  TASK_STATUS_BOUNTY_POSTED = 1;
+  TASK_STATUS_BIDDING = 2;
+  TASK_STATUS_ASSIGNED = 3;
+  TASK_STATUS_IN_PROGRESS = 4;
+  TASK_STATUS_UNDER_REVIEW = 5;
+  TASK_STATUS_COMPLETED = 6;
+  TASK_STATUS_FAILED = 7;
+  TASK_STATUS_CANCELLED = 8;
+}
+
+// Task bid information
+message TaskBid {
+  string id = 1;
+  string task_id = 2;
+  string agent_id = 3;
+  int64 bid_amount_cc = 4;
+  google.protobuf.Duration estimated_completion_time = 5;
+  string proposed_approach = 6;
+  double confidence_score = 7;
+  google.protobuf.Struct risk_factors = 8;
+  google.protobuf.Struct past_performance_evidence = 9;
+  BidStatus status = 10;
+  google.protobuf.Timestamp created_at = 11;
+}
+
+enum BidStatus {
+  BID_STATUS_UNKNOWN = 0;
+  BID_STATUS_PENDING = 1;
+  BID_STATUS_ACCEPTED = 2;
+  BID_STATUS_REJECTED = 3;
+  BID_STATUS_WITHDRAWN = 4;
+}
+
+// Decision in the causal ledger
+message Decision {
+  string id = 1;
+  string venture_id = 2;
+  string agent_id = 3;
+  string parent_decision_id = 4;
+  DecisionType decision_type = 5;
+  string triggered_by_event = 6;
+  string rationale = 7;
+  double confidence_level = 8;
+  google.protobuf.Struct consulted_data_sources = 9;
+  google.protobuf.Struct alternative_options = 10;
+  google.protobuf.Struct risk_assessment = 11;
+  google.protobuf.Struct expected_outcomes = 12;
+  google.protobuf.Struct actual_outcomes = 13;
+  double impact_score = 14;
+  int64 cognitive_cycles_invested = 15;
+  google.protobuf.Duration decision_latency = 16;
+  string lessons_learned = 17;
+  google.protobuf.Timestamp created_at = 18;
+  google.protobuf.Timestamp validated_at = 19;
+}
+
+enum DecisionType {
+  DECISION_TYPE_UNKNOWN = 0;
+  DECISION_TYPE_STRATEGIC = 1;
+  DECISION_TYPE_OPERATIONAL = 2;
+  DECISION_TYPE_REACTIVE = 3;
+  DECISION_TYPE_PREDICTIVE = 4;
+}
+
+// Infrastructure resource
+message InfrastructureResource {
+  string id = 1;
+  ResourceType resource_type = 2;
+  string provider = 3;
+  string resource_id = 4;
+  google.protobuf.Struct configuration = 5;
+  double cost_per_hour = 6;
+  google.protobuf.Struct performance_metrics = 7;
+  double utilization_percentage = 8;
+  ResourceStatus status = 9;
+  string assigned_to_agent_id = 10;
+  google.protobuf.Timestamp provisioned_at = 11;
+  google.protobuf.Timestamp terminated_at = 12;
+}
+
+enum ResourceType {
+  RESOURCE_TYPE_UNKNOWN = 0;
+  RESOURCE_TYPE_COMPUTE = 1;
+  RESOURCE_TYPE_STORAGE = 2;
+  RESOURCE_TYPE_NETWORK = 3;
+  RESOURCE_TYPE_DATABASE = 4;
+}
+
+enum ResourceStatus {
+  RESOURCE_STATUS_UNKNOWN = 0;
+  RESOURCE_STATUS_ACTIVE = 1;
+  RESOURCE_STATUS_STOPPED = 2;
+  RESOURCE_STATUS_TERMINATED = 3;
+  RESOURCE_STATUS_ERROR = 4;
+}
+
+// ====================================================
+// COMMUNICATION MESSAGES
+// ====================================================
+
+// Inter-agent message
+message AgentMessage {
+  string id = 1;
+  string from_agent_id = 2;
+  string to_agent_id = 3;
+  string venture_id = 4;
+  string task_id = 5;
+  MessageType message_type = 6;
+  string subject = 7;
+  string content = 8;
+  Priority priority = 9;
+  bool requires_response = 10;
+  string parent_message_id = 11;
+  google.protobuf.Struct metadata = 12;
+  google.protobuf.Timestamp created_at = 13;
+}
+
+enum MessageType {
+  MESSAGE_TYPE_UNKNOWN = 0;
+  MESSAGE_TYPE_REQUEST = 1;
+  MESSAGE_TYPE_RESPONSE = 2;
+  MESSAGE_TYPE_NOTIFICATION = 3;
+  MESSAGE_TYPE_COLLABORATION = 4;
+  MESSAGE_TYPE_RESOURCE_REQUEST = 5;
+  MESSAGE_TYPE_STATUS_UPDATE = 6;
+  MESSAGE_TYPE_ALERT = 7;
+}
+
+enum Priority {
+  PRIORITY_UNKNOWN = 0;
+  PRIORITY_LOW = 1;
+  PRIORITY_NORMAL = 2;
+  PRIORITY_HIGH = 3;
+  PRIORITY_URGENT = 4;
+  PRIORITY_CRITICAL = 5;
+}
+
+// Real-time event
+message SystemEvent {
+  string id = 1;
+  EventType event_type = 2;
+  string source_agent_id = 3;
+  string target_agent_id = 4;
+  string entity_type = 5;
+  string entity_id = 6;
+  string event_name = 7;
+  google.protobuf.Struct event_data = 8;
+  Severity severity = 9;
+  google.protobuf.Timestamp timestamp = 10;
+}
+
+enum EventType {
+  EVENT_TYPE_UNKNOWN = 0;
+  EVENT_TYPE_AGENT_STATUS_CHANGE = 1;
+  EVENT_TYPE_TASK_STATUS_CHANGE = 2;
+  EVENT_TYPE_RESOURCE_ALLOCATED = 3;
+  EVENT_TYPE_RESOURCE_RELEASED = 4;
+  EVENT_TYPE_DECISION_MADE = 5;
+  EVENT_TYPE_PERFORMANCE_ALERT = 6;
+  EVENT_TYPE_ECONOMIC_UPDATE = 7;
+  EVENT_TYPE_SYSTEM_ERROR = 8;
+}
+
+enum Severity {
+  SEVERITY_UNKNOWN = 0;
+  SEVERITY_DEBUG = 1;
+  SEVERITY_INFO = 2;
+  SEVERITY_WARNING = 3;
+  SEVERITY_ERROR = 4;
+  SEVERITY_CRITICAL = 5;
+}
+
+// ====================================================
+// REQUEST/RESPONSE MESSAGES
+// ====================================================
+
+// Agent service requests/responses
+message RegisterAgentRequest {
+  Agent agent = 1;
+}
+
+message RegisterAgentResponse {
+  bool success = 1;
+  string message = 2;
+  string agent_id = 3;
+}
+
+message UpdateHeartbeatRequest {
+  string agent_id = 1;
+  google.protobuf.Struct status_data = 2;
+}
+
+message UpdateHeartbeatResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetAgentInfoRequest {
+  string agent_id = 1;
+}
+
+message GetAgentInfoResponse {
+  Agent agent = 1;
+  bool found = 2;
+}
+
+message ListAgentsRequest {
+  AgentType agent_type = 1;
+  bool active_only = 2;
+  string specialization_filter = 3;
+}
+
+message ListAgentsResponse {
+  repeated Agent agents = 1;
+}
+
+// Task service requests/responses
+message CreateTaskRequest {
+  Task task = 1;
+}
+
+message CreateTaskResponse {
+  bool success = 1;
+  string message = 2;
+  string task_id = 3;
+}
+
+message PlaceBidRequest {
+  TaskBid bid = 1;
+}
+
+message PlaceBidResponse {
+  bool success = 1;
+  string message = 2;
+  string bid_id = 3;
+}
+
+message GetAvailableTasksRequest {
+  string agent_id = 1;
+  repeated TaskType task_types = 2;
+  int32 complexity_min = 3;
+  int32 complexity_max = 4;
+  HardwareType hardware_preference = 5;
+}
+
+message GetAvailableTasksResponse {
+  repeated Task tasks = 1;
+}
+
+message UpdateTaskStatusRequest {
+  string task_id = 1;
+  TaskStatus status = 2;
+  double quality_score = 3;
+  google.protobuf.Struct deliverables = 4;
+  string completion_notes = 5;
+}
+
+message UpdateTaskStatusResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Communication service requests/responses
+message SendMessageRequest {
+  AgentMessage message = 1;
+}
+
+message SendMessageResponse {
+  bool success = 1;
+  string message = 2;
+  string message_id = 3;
+}
+
+message GetMessagesRequest {
+  string agent_id = 1;
+  bool unread_only = 2;
+  MessageType message_type = 3;
+  int32 limit = 4;
+}
+
+message GetMessagesResponse {
+  repeated AgentMessage messages = 1;
+}
+
+message MarkMessageReadRequest {
+  string message_id = 1;
+  string agent_id = 2;
+}
+
+message MarkMessageReadResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Resource service requests/responses
+message RequestResourceRequest {
+  string agent_id = 1;
+  ResourceType resource_type = 2;
+  google.protobuf.Struct requirements = 3;
+  google.protobuf.Duration duration = 4;
+  Priority priority = 5;
+}
+
+message RequestResourceResponse {
+  bool success = 1;
+  string message = 2;
+  string resource_id = 3;
+  double estimated_cost = 4;
+}
+
+message ReleaseResourceRequest {
+  string resource_id = 1;
+  string agent_id = 2;
+}
+
+message ReleaseResourceResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetResourceUtilizationRequest {
+  string resource_id = 1;
+}
+
+message GetResourceUtilizationResponse {
+  InfrastructureResource resource = 1;
+  double current_utilization = 2;
+  google.protobuf.Struct metrics = 3;
+}
+
+// Decision service requests/responses
+message RecordDecisionRequest {
+  Decision decision = 1;
+}
+
+message RecordDecisionResponse {
+  bool success = 1;
+  string message = 2;
+  string decision_id = 3;
+}
+
+message GetCausalChainRequest {
+  string decision_id = 1;
+  int32 max_depth = 2;
+}
+
+message GetCausalChainResponse {
+  repeated Decision decisions = 1;
+  int32 chain_depth = 2;
+  double total_impact_score = 3;
+}
+
+// Event streaming requests/responses
+message SubscribeToEventsRequest {
+  string agent_id = 1;
+  repeated EventType event_types = 2;
+  repeated string entity_ids = 3;
+}
+
+message PublishEventRequest {
+  SystemEvent event = 1;
+}
+
+message PublishEventResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Performance and analytics requests/responses
+message GetPerformanceMetricsRequest {
+  string entity_type = 1;
+  string entity_id = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
+}
+
+message GetPerformanceMetricsResponse {
+  repeated PerformanceMetric metrics = 1;
+}
+
+message PerformanceMetric {
+  string metric_name = 1;
+  double value = 2;
+  string unit = 3;
+  google.protobuf.Timestamp timestamp = 4;
+  google.protobuf.Struct context = 5;
+}
+
+message GetEconomicStatusRequest {
+  string agent_id = 1;
+}
+
+message GetEconomicStatusResponse {
+  int64 cognitive_cycles_balance = 1;
+  int64 total_cc_earned = 2;
+  int32 active_bids = 3;
+  int32 tasks_completed_today = 4;
+  double daily_earnings = 5;
+  double market_rank = 6;
+}
+
+// ====================================================
+// SERVICE DEFINITIONS
+// ====================================================
+
+// Agent lifecycle and management service
+service AgentService {
+  // Register a new agent in the system
+  rpc RegisterAgent(RegisterAgentRequest) returns (RegisterAgentResponse);
+  
+  // Update agent heartbeat and status
+  rpc UpdateHeartbeat(UpdateHeartbeatRequest) returns (UpdateHeartbeatResponse);
+  
+  // Get agent information
+  rpc GetAgentInfo(GetAgentInfoRequest) returns (GetAgentInfoResponse);
+  
+  // List agents with filtering
+  rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse);
+  
+  // Get economic status for an agent
+  rpc GetEconomicStatus(GetEconomicStatusRequest) returns (GetEconomicStatusResponse);
+}
+
+// Task marketplace and management service
+service TaskService {
+  // Create a new task with bounty
+  rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse);
+  
+  // Place a bid on a task
+  rpc PlaceBid(PlaceBidRequest) returns (PlaceBidResponse);
+  
+  // Get available tasks for bidding
+  rpc GetAvailableTasks(GetAvailableTasksRequest) returns (GetAvailableTasksResponse);
+  
+  // Update task status and deliverables
+  rpc UpdateTaskStatus(UpdateTaskStatusRequest) returns (UpdateTaskStatusResponse);
+}
+
+// Inter-agent communication service
+service CommunicationService {
+  // Send a message to another agent
+  rpc SendMessage(SendMessageRequest) returns (SendMessageResponse);
+  
+  // Get messages for an agent
+  rpc GetMessages(GetMessagesRequest) returns (GetMessagesResponse);
+  
+  // Mark a message as read
+  rpc MarkMessageRead(MarkMessageReadRequest) returns (MarkMessageReadResponse);
+}
+
+// Resource management service
+service ResourceService {
+  // Request infrastructure resources
+  rpc RequestResource(RequestResourceRequest) returns (RequestResourceResponse);
+  
+  // Release infrastructure resources
+  rpc ReleaseResource(ReleaseResourceRequest) returns (ReleaseResourceResponse);
+  
+  // Get resource utilization metrics
+  rpc GetResourceUtilization(GetResourceUtilizationRequest) returns (GetResourceUtilizationResponse);
+}
+
+// Decision and causal ledger service
+service DecisionService {
+  // Record a decision in the causal ledger
+  rpc RecordDecision(RecordDecisionRequest) returns (RecordDecisionResponse);
+  
+  // Get causal chain for a decision
+  rpc GetCausalChain(GetCausalChainRequest) returns (GetCausalChainResponse);
+}
+
+// Real-time event streaming service
+service EventService {
+  // Subscribe to real-time system events
+  rpc SubscribeToEvents(SubscribeToEventsRequest) returns (stream SystemEvent);
+  
+  // Publish an event to the system
+  rpc PublishEvent(PublishEventRequest) returns (PublishEventResponse);
+}
+
+// Performance monitoring and analytics service
+service AnalyticsService {
+  // Get performance metrics for entities
+  rpc GetPerformanceMetrics(GetPerformanceMetricsRequest) returns (GetPerformanceMetricsResponse);
+}
