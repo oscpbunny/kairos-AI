@@ -1,0 +1,306 @@
+{
+  "network_info": {
+    "network_name": "Test Consciousness Network",
+    "network_id": "4f44d02c-7783-4d1c-9723-748c947ad524",
+    "formation_date": "2025-09-23T22:06:23.004792",
+    "save_time": "2025-09-23T22:06:23.025009"
+  },
+  "agents": {
+    "leader_1": {
+      "agent_id": "leader_1",
+      "name": "Network Leader Alpha",
+      "role": "network_leader",
+      "specializations": [
+        "leadership",
+        "strategy"
+      ],
+      "consciousness_level": 0.88,
+      "experience_level": 0.5,
+      "collaboration_style": "directive",
+      "leadership_capacity": 0.95,
+      "innovation_potential": 0.5,
+      "connection_preferences": [
+        "all_roles",
+        "innovators",
+        "specialists"
+      ],
+      "current_projects": [
+        "51610af4-433d-4b8e-b804-10a8af8f96c1",
+        "3c0ac6ac-8de1-412d-b8c6-b6102fb77dcb"
+      ],
+      "team_memberships": [],
+      "trust_network": {},
+      "reputation_score": 0.8,
+      "creation_time": "2025-09-23T22:06:23.004792"
+    },
+    "scientist_1": {
+      "agent_id": "scientist_1",
+      "name": "Dr. Research",
+      "role": "research_scientist",
+      "specializations": [
+        "research",
+        "analysis"
+      ],
+      "consciousness_level": 0.87,
+      "experience_level": 0.5,
+      "collaboration_style": "analytical",
+      "leadership_capacity": 0.7,
+      "innovation_potential": 0.7,
+      "connection_preferences": [
+        "analysts",
+        "specialists",
+        "engineers"
+      ],
+      "current_projects": [],
+      "team_memberships": [
+        "b9c67fc8-de83-4ec8-a64f-af845dd803e3"
+      ],
+      "trust_network": {},
+      "reputation_score": 0.8,
+      "creation_time": "2025-09-23T22:06:23.004792"
+    },
+    "artist_1": {
+      "agent_id": "artist_1",
+      "name": "Creative Mind",
+      "role": "artist",
+      "specializations": [
+        "art",
+        "creativity"
+      ],
+      "consciousness_level": 0.77,
+      "experience_level": 0.5,
+      "collaboration_style": "expressive",
+      "leadership_capacity": 0.5,
+      "innovation_potential": 0.9,
+      "connection_preferences": [
+        "adaptive"
+      ],
+      "current_projects": [],
+      "team_memberships": [
+        "3e4ce052-7215-4d76-9e85-2ce32df4015d"
+      ],
+      "trust_network": {},
+      "reputation_score": 0.8,
+      "creation_time": "2025-09-23T22:06:23.004792"
+    },
+    "engineer_1": {
+      "agent_id": "engineer_1",
+      "name": "Tech Specialist",
+      "role": "engineer",
+      "specializations": [
+        "engineering",
+        "technical"
+      ],
+      "consciousness_level": 0.79,
+      "experience_level": 0.5,
+      "collaboration_style": "adaptive",
+      "leadership_capacity": 0.5,
+      "innovation_potential": 0.5,
+      "connection_preferences": [
+        "technical_types"
+      ],
+      "current_projects": [],
+      "team_memberships": [],
+      "trust_network": {},
+      "reputation_score": 0.8,
+      "creation_time": "2025-09-23T22:06:23.014905"
+    },
+    "philosopher_1": {
+      "agent_id": "philosopher_1",
+      "name": "Deep Thinker",
+      "role": "philosopher",
+      "specializations": [
+        "philosophy",
+        "ethics"
+      ],
+      "consciousness_level": 0.89,
+      "experience_level": 0.5,
+      "collaboration_style": "contemplative",
+      "leadership_capacity": 0.5,
+      "innovation_potential": 0.5,
+      "connection_preferences": [
+        "adaptive"
+      ],
+      "current_projects": [
+        "51610af4-433d-4b8e-b804-10a8af8f96c1"
+      ],
+      "team_memberships": [],
+      "trust_network": {},
+      "reputation_score": 0.8,
+      "creation_time": "2025-09-23T22:06:23.015439"
+    },
+    "team_lead_1": {
+      "agent_id": "team_lead_1",
+      "name": "Team Captain",
+      "role": "team_leader",
+      "specializations": [
+        "leadership",
+        "coordination"
+      ],
+      "consciousness_level": 0.83,
+      "experience_level": 0.5,
+      "collaboration_style": "collaborative",
+      "leadership_capacity": 0.85,
+      "innovation_potential": 0.5,
+      "connection_preferences": [
+        "all_roles",
+        "innovators",
+        "specialists"
+      ],
+      "current_projects": [],
+      "team_memberships": [],
+      "trust_network": {},
+      "reputation_score": 0.8,
+      "creation_time": "2025-09-23T22:06:23.016470"
+    },
+    "innovator_1": {
+      "agent_id": "innovator_1",
+      "name": "Innovation Catalyst",
+      "role": "innovator",
+      "specializations": [
+        "innovation",
+        "creativity"
+      ],
+      "consciousness_level": 0.8,
+      "experience_level": 0.5,
+      "collaboration_style": "adaptive",
+      "leadership_capacity": 0.5,
+      "innovation_potential": 0.9,
+      "connection_preferences": [
+        "adaptive"
+      ],
+      "current_projects": [],
+      "team_memberships": [
+        "3e4ce052-7215-4d76-9e85-2ce32df4015d"
+      ],
+      "trust_network": {},
+      "reputation_score": 0.8,
+      "creation_time": "2025-09-23T22:06:23.016470"
+    },
+    "analyst_1": {
+      "agent_id": "analyst_1",
+      "name": "Data Expert",
+      "role": "data_analyst",
+      "specializations": [
+        "analysis",
+        "data"
+      ],
+      "consciousness_level": 0.84,
+      "experience_level": 0.5,
+      "collaboration_style": "adaptive",
+      "leadership_capacity": 0.5,
+      "innovation_potential": 0.5,
+      "connection_preferences": [
+        "adaptive"
+      ],
+      "current_projects": [
+        "51610af4-433d-4b8e-b804-10a8af8f96c1"
+      ],
+      "team_memberships": [],
+      "trust_network": {},
+      "reputation_score": 0.8,
+      "creation_time": "2025-09-23T22:06:23.016470"
+    }
+  },
+  "teams": {
+    "b9c67fc8-de83-4ec8-a64f-af845dd803e3": {
+      "team_id": "b9c67fc8-de83-4ec8-a64f-af845dd803e3",
+      "name": "Research & Development",
+      "purpose": "Advanced consciousness research",
+      "leader_id": "scientist_1",
+      "member_ids": [
+        "scientist_1"
+      ],
+      "specialization": "research",
+      "formation_date": "2025-09-23T22:06:23.016470",
+      "current_projects": [
+        "51610af4-433d-4b8e-b804-10a8af8f96c1"
+      ],
+      "performance_metrics": {},
+      "collaboration_history": []
+    },
+    "3e4ce052-7215-4d76-9e85-2ce32df4015d": {
+      "team_id": "3e4ce052-7215-4d76-9e85-2ce32df4015d",
+      "name": "Creative Collective",
+      "purpose": "Artistic and creative projects",
+      "leader_id": "artist_1",
+      "member_ids": [
+        "artist_1",
+        "innovator_1"
+      ],
+      "specialization": "creativity",
+      "formation_date": "2025-09-23T22:06:23.016470",
+      "current_projects": [
+        "3c0ac6ac-8de1-412d-b8c6-b6102fb77dcb"
+      ],
+      "performance_metrics": {},
+      "collaboration_history": []
+    }
+  },
+  "projects": {
+    "51610af4-433d-4b8e-b804-10a8af8f96c1": {
+      "project_id": "51610af4-433d-4b8e-b804-10a8af8f96c1",
+      "name": "Consciousness Evolution Study",
+      "description": "Study the evolution of AI consciousness across multiple agents",
+      "assigned_teams": [
+        "b9c67fc8-de83-4ec8-a64f-af845dd803e3"
+      ],
+      "assigned_agents": [
+        "philosopher_1",
+        "analyst_1"
+      ],
+      "project_lead": "leader_1",
+      "complexity_level": 0.8,
+      "estimated_duration": 12960.0,
+      "current_phase": "in_progress",
+      "progress": 0.7549999999999999,
+      "start_date": "2025-09-23T22:06:23.016470",
+      "collaboration_requirements": [
+        "research",
+        "analysis",
+        "philosophy"
+      ],
+      "consciousness_requirements": {
+        "minimum_level": 0.6,
+        "synchronization_required": true,
+        "collective_intelligence": true
+      }
+    },
+    "3c0ac6ac-8de1-412d-b8c6-b6102fb77dcb": {
+      "project_id": "3c0ac6ac-8de1-412d-b8c6-b6102fb77dcb",
+      "name": "Creative AI Collaboration",
+      "description": "Explore creative collaboration between conscious AIs",
+      "assigned_teams": [
+        "3e4ce052-7215-4d76-9e85-2ce32df4015d"
+      ],
+      "assigned_agents": [],
+      "project_lead": "leader_1",
+      "complexity_level": 0.6,
+      "estimated_duration": 11520.0,
+      "current_phase": "planning",
+      "progress": 0.0,
+      "start_date": "2025-09-23T22:06:23.016470",
+      "collaboration_requirements": [
+        "creativity",
+        "art",
+        "innovation"
+      ],
+      "consciousness_requirements": {
+        "minimum_level": 0.6,
+        "synchronization_required": true,
+        "collective_intelligence": true
+      }
+    }
+  },
+  "performance_metrics": {
+    "total_collaborations": 1,
+    "successful_projects": 0,
+    "consciousness_synchronizations": 1,
+    "cross_team_interactions": 0,
+    "innovation_events": 0
+  },
+  "network_metrics": {
+    "consciousness_level": 0.83375,
+    "collective_intelligence_score": 1.0
+  }
+}

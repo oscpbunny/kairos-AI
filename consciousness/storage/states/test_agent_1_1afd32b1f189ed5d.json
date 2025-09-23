@@ -1,0 +1,31 @@
+{
+  "agent_id": "test_agent_1",
+  "agent_name": "Test Agent Alpha",
+  "timestamp": "2025-09-23T22:05:15.893308",
+  "consciousness_level": 0.75,
+  "emotional_state": {
+    "current_emotion": "neutral",
+    "emotion_intensity": 0.5
+  },
+  "memory_state": {
+    "thoughts": [],
+    "insights": []
+  },
+  "dream_state": {
+    "dream_log": [],
+    "subconscious_queue": []
+  },
+  "creative_state": {
+    "creative_works": [],
+    "inspiration_level": 0.5
+  },
+  "learning_state": {
+    "knowledge_base": {},
+    "learning_rate": 0.1,
+    "specializations": [],
+    "skill_levels": {}
+  },
+  "experience_hash": "1afd32b1f189ed5d",
+  "generation": 1,
+  "parent_states": []
+}

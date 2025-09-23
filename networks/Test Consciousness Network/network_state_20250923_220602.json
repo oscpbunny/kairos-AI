@@ -1,0 +1,12 @@
+{
+  "network_info": {
+    "network_name": "Test Consciousness Network",
+    "network_id": "ed453bb8-5615-4cbd-a0d8-9273cce859b7",
+    "formation_date": "2025-09-23T22:06:02.557882",
+    "save_time": "2025-09-23T22:06:02.600040"
+  },
+  "agents": {
+    "leader_1": {
+      "agent_id": "leader_1",
+      "name": "Network Leader Alpha",
+      "role": 
