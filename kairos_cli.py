@@ -10,9 +10,9 @@ from psycopg2.extras import RealDictCursor
 
 # --- Configuration ---
 # Uses the same environment variables as the agent for consistency.
-DB_NAME = os.environ.get("DB_NAME", "kairos_db")
-DB_USER = os.environ.get("DB_USER", "postgres")
-DB_PASSWORD = os.environ.get("DB_PASSWORD", "password")
+DB_NAME = os.environ.get("DB_NAME", "kairos")
+DB_USER = os.environ.get("DB_USER", "kairos")
+DB_PASSWORD = os.environ.get("DB_PASSWORD", "kairos_password")
 DB_HOST = os.environ.get("DB_HOST", "localhost")
 DB_PORT = os.environ.get("DB_PORT", "5432")
 

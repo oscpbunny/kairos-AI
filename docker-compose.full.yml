@@ -64,7 +64,7 @@ services:
       sh -c "
         echo 'Starting Kairos API Server...' &&
         python -c 'import time; print(\"Waiting for dependencies...\"); time.sleep(10)' &&
-        python api/launcher.py
+        python api/launch_api.py
       "
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
@@ -140,7 +140,7 @@ services:
       sh -c "
         echo 'Starting Kairos Steward Agent...' &&
         python -c 'import time; print(\"Initializing Steward...\"); time.sleep(20)' &&
-        python agents/enhanced/enhanced_steward.py
+        python agents/enhanced/launch_steward.py
       "
     restart: unless-stopped
     deploy:
@@ -175,7 +175,7 @@ services:
       sh -c "
         echo 'Starting Kairos Architect Agent...' &&
         python -c 'import time; print(\"Initializing Architect...\"); time.sleep(25)' &&
-        python agents/enhanced/enhanced_architect.py
+        python agents/enhanced/launch_architect.py
       "
     restart: unless-stopped
     deploy:
@@ -210,7 +210,7 @@ services:
       sh -c "
         echo 'Starting Kairos Engineer Agent...' &&
         python -c 'import time; print(\"Initializing Engineer...\"); time.sleep(30)' &&
-        python agents/enhanced/enhanced_engineer.py
+        python agents/enhanced/launch_engineer.py
       "
     restart: unless-stopped
     deploy:

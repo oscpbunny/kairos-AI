@@ -55,6 +55,20 @@
         "memory"
       ],
       "storage_path": "E:\\kairos\\consciousness_storage\\snapshots\\kairos_phase85_demo_20250923_183029"
+    },
+    "kairos_phase85_demo_20250923_194618": {
+      "timestamp": "2025-09-23T19:46:18.446770",
+      "node_id": "kairos_phase85_demo",
+      "version": "8.0.0",
+      "size_bytes": 1428,
+      "components": [
+        "metacognition",
+        "emotions",
+        "creativity",
+        "dreams",
+        "memory"
+      ],
+      "storage_path": "E:\\kairos\\consciousness_storage\\snapshots\\kairos_phase85_demo_20250923_194618"
     }
   },
   "nodes": {
@@ -75,10 +89,11 @@
     },
     "kairos_phase85_demo": {
       "snapshots": [
-        "kairos_phase85_demo_20250923_183029"
+        "kairos_phase85_demo_20250923_183029",
+        "kairos_phase85_demo_20250923_194618"
       ],
       "first_snapshot": "2025-09-23T18:30:29.964702",
-      "last_snapshot": "2025-09-23T18:30:29.964702"
+      "last_snapshot": "2025-09-23T19:46:18.446770"
     }
   },
   "last_backup": "kairos_transfer_demo_20250923_182344",

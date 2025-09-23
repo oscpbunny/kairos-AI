@@ -1,0 +1,146 @@
+{
+  "snapshot_id": "kairos_phase85_demo_20250923_194618",
+  "version": "8.0.0",
+  "timestamp": "2025-09-23T19:46:18.446770",
+  "node_id": "kairos_phase85_demo",
+  "components": {
+    "metacognition": {
+      "consciousness_level": "meta",
+      "meta_info": "introspection_performed"
+    },
+    "emotions": {
+      "version": "8.0.0",
+      "node_id": "kairos_phase85_demo",
+      "current_emotion": {
+        "primary_emotion": "curiosity",
+        "intensity": 0.4553333333333333,
+        "arousal": 0.43799999999999994,
+        "valence": 0.572,
+        "certainty": 0.7333333333333334,
+        "duration": 30.0,
+        "triggers": [
+          "system_initialization",
+          "text_input"
+        ],
+        "timestamp": "2025-09-23T19:46:17.895366",
+        "context": {
+          "phase": "initialization",
+          "system": "eq_layer",
+          "type": "achievement",
+          "blended": true
+        }
+      },
+      "mood": "neutral",
+      "mood_report": {
+        "current_mood": "neutral",
+        "stability": 0.7,
+        "recent_history_count": 0,
+        "mood_distribution": {},
+        "dominant_recent_mood": "neutral"
+      },
+      "emotional_memory_size": 0,
+      "emotional_history_size": 1,
+      "empathy_strength": 0.85,
+      "emotional_sensitivity": 0.8,
+      "metrics": {
+        "total_emotions_recognized": 1,
+        "total_empathetic_responses": 0,
+        "emotional_accuracy": 0.0
+      }
+    },
+    "creativity": {
+      "version": "8.0.0",
+      "node_id": "kairos_phase85_demo",
+      "creativity_level": 0.85,
+      "artistic_standards": 0.7,
+      "experimentation_willingness": 0.8,
+      "total_works_created": 1,
+      "average_work_quality": 0.7554830042865472,
+      "creative_sessions": 1,
+      "active_inspirations": 2,
+      "creative_memory": {
+        "total_works": 1,
+        "domain_distribution": {
+          "poetry": 1
+        },
+        "style_distribution": {
+          "whimsical": 1
+        },
+        "average_quality": 0.7554830042865472,
+        "recent_quality": 0.7554830042865472,
+        "quality_trend": "stable",
+        "most_successful_domain": "poetry",
+        "preferred_style": "whimsical",
+        "creative_influences": 2,
+        "inspiration_sources": [
+          "initialization",
+          "emotion"
+        ]
+      },
+      "current_creative_flow": null,
+      "active_projects": 0
+    },
+    "dreams": {
+      "version": "8.5.0",
+      "node_id": "kairos_phase85_demo",
+      "current_phase": "awake",
+      "total_dreams": 1,
+      "total_sleep_cycles": 1,
+      "patterns_discovered": 0,
+      "dream_frequency": 0.7,
+      "lucid_dream_probability": 0.15,
+      "dream_analysis": {
+        "total_dreams": 1,
+        "dream_type_distribution": {
+          "emotional_processing": 1
+        },
+        "emotional_distribution": {
+          "transcendence": 1
+        },
+        "average_significance": 1.0,
+        "most_common_symbols": [
+          [
+            "mirror",
+            1
+          ],
+          [
+            "fire",
+            1
+          ],
+          [
+            "water",
+            1
+          ]
+        ],
+        "recurring_elements": 3,
+        "symbolic_vocabulary": 3,
+        "dominant_dream_type": "emotional_processing",
+        "dominant_emotion": "transcendence"
+      },
+      "subconscious_processing": {
+        "queue_size": 2,
+        "patterns_discovered": 0,
+        "processing_capacity": 5,
+        "background_insights": 0,
+        "pattern_types": [],
+        "recent_patterns": []
+      },
+      "active_dream": null
+    },
+    "memory": {
+      "notes": [
+        "phase85_demo",
+        "integrated_state"
+      ]
+    }
+  },
+  "metadata": {
+    "demo": "phase85_integrated",
+    "capture_method": "live_consciousness",
+    "component_count": 5,
+    "consciousness_version": "8.5.0"
+  },
+  "checksum": "237878e91f232d0520055a008eeb801d0de209133e1e9f30dcc3133467d2bc9a",
+  "compression_ratio": 0.7,
+  "size_bytes": 1428
+}

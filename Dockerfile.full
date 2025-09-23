@@ -78,8 +78,11 @@ RUN pip install --no-cache-dir \
     transformers \
     strawberry-graphql[fastapi]
 
-# Install remaining packages
+# Install infrastructure and remaining packages
 RUN pip install --no-cache-dir \
+    pulumi \
+    pulumi-aws \
+    pulumi-kubernetes \
     pytest \
     pytest-asyncio \
     black \
