@@ -1,0 +1,86 @@
+{
+  "snapshots": {
+    "kairos_transfer_demo_20250923_182343": {
+      "timestamp": "2025-09-23T18:23:43.823856",
+      "node_id": "kairos_transfer_demo",
+      "version": "8.0.0",
+      "size_bytes": 614,
+      "components": [
+        "metacognition",
+        "emotions",
+        "creativity",
+        "dreams",
+        "memory"
+      ],
+      "storage_path": "E:\\kairos\\consciousness_storage\\snapshots\\kairos_transfer_demo_20250923_182343"
+    },
+    "kairos_backup_node_20250923_182344_migrated": {
+      "timestamp": "2025-09-23T18:23:44.085261",
+      "node_id": "kairos_backup_node",
+      "version": "8.0.0",
+      "size_bytes": 614,
+      "components": [
+        "metacognition",
+        "emotions",
+        "creativity",
+        "dreams",
+        "memory"
+      ],
+      "storage_path": "E:\\kairos\\consciousness_storage\\snapshots\\kairos_backup_node_20250923_182344_migrated"
+    },
+    "kairos_transfer_demo_20250923_182344": {
+      "timestamp": "2025-09-23T18:23:44.119443",
+      "node_id": "kairos_transfer_demo",
+      "version": "8.0.0",
+      "size_bytes": 614,
+      "components": [
+        "metacognition",
+        "emotions",
+        "creativity",
+        "dreams",
+        "memory"
+      ],
+      "storage_path": "E:\\kairos\\consciousness_storage\\snapshots\\kairos_transfer_demo_20250923_182344"
+    },
+    "kairos_phase85_demo_20250923_183029": {
+      "timestamp": "2025-09-23T18:30:29.964702",
+      "node_id": "kairos_phase85_demo",
+      "version": "8.0.0",
+      "size_bytes": 1424,
+      "components": [
+        "metacognition",
+        "emotions",
+        "creativity",
+        "dreams",
+        "memory"
+      ],
+      "storage_path": "E:\\kairos\\consciousness_storage\\snapshots\\kairos_phase85_demo_20250923_183029"
+    }
+  },
+  "nodes": {
+    "kairos_transfer_demo": {
+      "snapshots": [
+        "kairos_transfer_demo_20250923_182343",
+        "kairos_transfer_demo_20250923_182344"
+      ],
+      "first_snapshot": "2025-09-23T18:23:43.823856",
+      "last_snapshot": "2025-09-23T18:23:44.119443"
+    },
+    "kairos_backup_node": {
+      "snapshots": [
+        "kairos_backup_node_20250923_182344_migrated"
+      ],
+      "first_snapshot": "2025-09-23T18:23:44.085261",
+      "last_snapshot": "2025-09-23T18:23:44.085261"
+    },
+    "kairos_phase85_demo": {
+      "snapshots": [
+        "kairos_phase85_demo_20250923_183029"
+      ],
+      "first_snapshot": "2025-09-23T18:30:29.964702",
+      "last_snapshot": "2025-09-23T18:30:29.964702"
+    }
+  },
+  "last_backup": "kairos_transfer_demo_20250923_182344",
+  "version": "1.0.0"
+}

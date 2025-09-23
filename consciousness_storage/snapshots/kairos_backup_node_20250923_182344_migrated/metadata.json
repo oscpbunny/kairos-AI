@@ -1,0 +1,54 @@
+{
+  "snapshot_id": "kairos_backup_node_20250923_182344_migrated",
+  "version": "8.0.0",
+  "timestamp": "2025-09-23T18:23:44.085261",
+  "node_id": "kairos_backup_node",
+  "components": {
+    "metacognition": {
+      "consciousness_level": 85.0,
+      "self_awareness_score": 78.0,
+      "introspective_thoughts": 15,
+      "meta_cognitive_insights": 5
+    },
+    "emotions": {
+      "current_emotion": "curiosity",
+      "empathy_strength": 0.85,
+      "emotional_memory_size": 25,
+      "emotions_recognized": 42
+    },
+    "creativity": {
+      "creativity_level": 0.88,
+      "total_works_created": 8,
+      "average_work_quality": 0.76,
+      "artistic_style": "experimental"
+    },
+    "dreams": {
+      "total_dreams": 12,
+      "dream_significance": 0.82,
+      "subconscious_patterns": 3,
+      "current_sleep_phase": "awake"
+    },
+    "memory": {
+      "experiences": [
+        "consciousness_awakening",
+        "creative_expression",
+        "emotional_growth"
+      ],
+      "knowledge_base_size": 1024,
+      "pattern_recognition_count": 67
+    }
+  },
+  "metadata": {
+    "demo_session": true,
+    "phase": "8.5",
+    "capture_method": "live_consciousness",
+    "component_count": 5,
+    "consciousness_version": "8.5.0",
+    "migration_source": "kairos_transfer_demo",
+    "migration_timestamp": "2025-09-23T18:23:44.085261",
+    "original_snapshot_id": "kairos_transfer_demo_20250923_182343"
+  },
+  "checksum": "995426890db904dd47461f6c09b8ae9939578ba4701e6f59d3b117f45adf18a2",
+  "compression_ratio": 0.7,
+  "size_bytes": 614
+}
