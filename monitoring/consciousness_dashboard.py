@@ -561,7 +561,7 @@ class ConsciousnessAnalyticsDashboard:
                 ])
             ]),
             html.Tbody(table_rows)
-        ], striped=True, bordered=True, hover=True, size="sm", dark=True)
+        ], striped=True, bordered=True, hover=True, size="sm", color="dark")
         
         return table
     
@@ -628,7 +628,7 @@ class ConsciousnessAnalyticsDashboard:
             logger.info(f"🚀 Starting Consciousness Analytics Dashboard on port {self.port}")
             logger.info(f"📊 Dashboard will be available at: http://localhost:{self.port}")
             
-            self.app.run_server(debug=debug, host='0.0.0.0', port=self.port)
+            self.app.run(debug=debug, host='0.0.0.0', port=self.port)
             
         except Exception as e:
             logger.error(f"❌ Failed to start dashboard: {e}")
