@@ -64,7 +64,7 @@ services:
       sh -c "
         echo 'Starting Kairos API Server...' &&
         python -c 'import time; print(\"Waiting for dependencies...\"); time.sleep(10)' &&
-        python api/launch_api.py
+        python api/launcher.py
       "
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
