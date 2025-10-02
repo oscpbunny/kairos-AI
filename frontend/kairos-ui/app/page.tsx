@@ -147,9 +147,9 @@ export default function KairosMainInterface() {
       case 'chat':
         return <ChatInterface {...commonProps} />;
       case 'agents':
-        return <AgentStatusPanel agents={agents} {...commonProps} />;
+        return <AgentStatusPanel {...commonProps} />;
       case 'project':
-        return <ProjectContextPanel context={mockProject} onContextUpdate={() => {}} onGoalAdd={() => {}} onGoalRemove={() => {}} {...commonProps} />;
+        return <ProjectContextPanel {...commonProps} />;
       case 'files':
         return <FileUploadZone onFileDrop={() => {}} {...commonProps} />;
       case 'tasks':

@@ -292,9 +292,9 @@ export const ProjectContextPanel: React.FC<ProjectContextPanelProps> = ({ classN
                           <textarea
                             className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                             rows={4}
-                            defaultValue={selectedProjectData.context?.background || ''}
+                            defaultValue={selectedProjectData.description || ''}
                             placeholder="Describe the project background, requirements, and context..."
-                            onBlur={(e) => updateProjectContext(selectedProjectData.id, { background: e.target.value })}
+                            onBlur={(e) => updateProjectContext(selectedProjectData.id, { description: e.target.value })}
                           />
                         </div>
                         <div>
@@ -303,11 +303,9 @@ export const ProjectContextPanel: React.FC<ProjectContextPanelProps> = ({ classN
                           </label>
                           <input
                             className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-                            defaultValue={selectedProjectData.context?.stakeholders?.join(', ') || ''}
+                            defaultValue={''}
                             placeholder="Enter stakeholder names (comma separated)"
-                            onBlur={(e) => updateProjectContext(selectedProjectData.id, { 
-                              stakeholders: e.target.value.split(',').map(s => s.trim()).filter(Boolean) 
-                            })}
+                            onBlur={(e) => console.log('Stakeholders:', e.target.value)}
                           />
                         </div>
                         <div>
@@ -317,9 +315,9 @@ export const ProjectContextPanel: React.FC<ProjectContextPanelProps> = ({ classN
                           <textarea
                             className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                             rows={3}
-                            defaultValue={selectedProjectData.context?.successCriteria || ''}
+                            defaultValue={''}
                             placeholder="Define what success looks like for this project..."
-                            onBlur={(e) => updateProjectContext(selectedProjectData.id, { successCriteria: e.target.value })}
+                            onBlur={(e) => console.log('Success criteria:', e.target.value)}
                           />
                         </div>
                       </div>
@@ -335,13 +333,9 @@ export const ProjectContextPanel: React.FC<ProjectContextPanelProps> = ({ classN
                       <div className="space-y-3">
                         {selectedProjectData.context?.goals?.map((goal, index) => (
                           <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-800 rounded">
-                            <input type="checkbox" className="rounded" defaultChecked={goal.completed} />
+                            <input type="checkbox" className="rounded" />
                             <div className="flex-1">
-                              <div className="font-medium">{goal.title}</div>
-                              <div className="text-sm text-gray-600 dark:text-gray-400">{goal.description}</div>
-                            </div>
-                            <div className="text-xs text-gray-500">
-                              {goal.priority}
+                              <div className="font-medium">{goal}</div>
                             </div>
                           </div>
                         )) || (

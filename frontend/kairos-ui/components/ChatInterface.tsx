@@ -5,7 +5,7 @@ import { Send, Paperclip, Bot, User, Loader, FileText, Image, Code, Archive } fr
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vsDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { format } from 'date-fns';
 
 interface Message {
@@ -228,11 +228,12 @@ export function ChatInterface({ className = '' }: ChatInterfaceProps) {
                   <ReactMarkdown
                     className="prose prose-sm dark:prose-invert max-w-none"
                     components={{
-                      code({node, inline, className, children, ...props}) {
+                      code({node, className, children, ...props}: any) {
                         const match = /language-(\\w+)/.exec(className || '');
-                        return !inline && match ? (
+                        const isInline = !className;
+                        return !isInline && match ? (
                           <SyntaxHighlighter
-                            style={vsDark}
+                            style={dark}
                             language={match[1]}
                             PreTag="div"
                             className="rounded-md"
