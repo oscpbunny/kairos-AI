@@ -15,7 +15,7 @@ class KairosAPIClient implements KairosAPI {
   private client: AxiosInstance;
   private baseURL: string;
 
-  constructor(baseURL: string = '/api/kairos') {
+  constructor(baseURL: string = 'http://localhost:8080') {
     this.baseURL = baseURL;
     this.client = axios.create({
       baseURL,

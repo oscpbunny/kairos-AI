@@ -48,7 +48,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChatInterface } from '@/components/ChatInterface';
+import { RealTimeChatInterface } from '@/components/RealTimeChatInterface';
 import { FileUploadZone } from '@/components/FileUploadZone';
 import { AgentStatusPanel } from '@/components/AgentStatusPanel';
 import { ProjectContextPanel } from '@/components/ProjectContextPanel';
@@ -60,6 +60,7 @@ import { DatabasePanel } from '@/components/DatabasePanel';
 import { LogsPanel } from '@/components/LogsPanel';
 import { DockerPanel } from '@/components/DockerPanel';
 import { APIPanel } from '@/components/APIPanel';
+import { ConsciousnessVisualization } from '@/components/ConsciousnessVisualization';
 import { mockAgents, createMockProject } from '@/lib/uiApi';
 
 type Tab = 
@@ -69,6 +70,7 @@ type Tab =
   | 'files' 
   | 'tasks' 
   | 'analytics' 
+  | 'consciousness'
   | 'system'
   | 'database'
   | 'logs'
@@ -94,6 +96,7 @@ const tabs: TabConfig[] = [
   // Management
   { id: 'tasks', name: 'Tasks', icon: <CheckCircle />, description: 'Collaboration task management', category: 'management' },
   { id: 'analytics', name: 'Analytics', icon: <BarChart3 />, description: 'Performance metrics and insights', category: 'management' },
+  { id: 'consciousness', name: 'Consciousness', icon: <Brain />, description: 'AI consciousness visualization', category: 'management' },
   
   // Development
   { id: 'api', name: 'API', icon: <Code />, description: 'REST API documentation and testing', category: 'development' },
@@ -145,7 +148,7 @@ export default function KairosMainInterface() {
 
     switch (activeTab) {
       case 'chat':
-        return <ChatInterface {...commonProps} />;
+        return <RealTimeChatInterface {...commonProps} />;
       case 'agents':
         return <AgentStatusPanel {...commonProps} />;
       case 'project':
@@ -156,6 +159,8 @@ export default function KairosMainInterface() {
         return <TaskManagementPanel {...commonProps} />;
       case 'analytics':
         return <AnalyticsPanel {...commonProps} />;
+      case 'consciousness':
+        return <ConsciousnessVisualization {...commonProps} />;
       case 'system':
         return <SystemMetricsPanel {...commonProps} />;
       case 'database':
