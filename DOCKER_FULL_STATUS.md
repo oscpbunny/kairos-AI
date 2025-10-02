@@ -1,4 +1,6 @@
-# 🌟 Kairos ADO - Full Docker System Status
+# Kairos ADO - Full Docker System Status
+
+> Note: For verified, tested functionality and measured results, see VERIFIED_CAPABILITIES.md.
 
 ## ✅ **SUCCESSFULLY DEPLOYED IN DOCKER!**
 
@@ -114,7 +116,6 @@ The complete system is now running with:
 - **Comprehensive monitoring** via Prometheus & Grafana
 - **Live dashboard** via Vision Board
 
-**The future of autonomous digital organizations is now live!** 🌟
 
 ---
 

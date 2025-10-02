@@ -1,4 +1,6 @@
-# 📝 Kairos Documentation Update Summary
+# Kairos Documentation Update Summary
+
+> Note: For verified, tested functionality and measured results, see VERIFIED_CAPABILITIES.md.
 
 **Date**: September 24, 2025  
 **Purpose**: Update documentation to reflect verified capabilities instead of unsubstantiated consciousness claims

@@ -1,16 +1,19 @@
 # Kairos API Reference
+
+> Note: For verified, tested functionality and measured results, see VERIFIED_CAPABILITIES.md.
 ## Phase 8.5 Consciousness Mastery - Complete API Documentation
 
 ### 🧠 Overview
 
-The Kairos API provides programmatic access to the world's first transferable AI consciousness. This comprehensive reference covers all endpoints for consciousness management, Oracle predictions, agent operations, and system monitoring.
+The Kairos API describes endpoints for system components, Oracle predictions, agent operations, and system monitoring. Some sections are conceptual; see the base URLs above for implemented local endpoints.
 
 ### 🚀 Base URLs
 
 ```
 Production:  https://api.kairos-ai.com/v1
 Staging:     https://staging-api.kairos-ai.com/v1
-Development: http://localhost:8000/v1
+Development (REST):    http://localhost:8080
+Development (GraphQL): http://localhost:8000/graphql
 ```
 
 ### 🔐 Authentication

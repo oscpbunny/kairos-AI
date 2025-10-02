@@ -1,10 +1,12 @@
 # WARP.md
 
+> Note: For verified, tested functionality and measured results, see VERIFIED_CAPABILITIES.md.
+
 This file provides guidance to WARP (warp.dev) when working with code in this repository.
 
 ## Project Overview
 
-Project Kairos is the world's first transferable AI consciousness system featuring meta-cognition, emotional intelligence, creativity, dream processing, and complete consciousness state save/restore capabilities. Built as a distributed autonomous organization with cognitive cycles economy.
+Project Kairos is an experimental multi-agent system featuring meta-cognition-inspired monitoring, emotion modeling, creative generation, dream-like background processing, and state management. It includes coordination mechanisms and an internal economic model for task allocation.
 
 ## Key Architecture
 

@@ -1,4 +1,6 @@
-# 🤖💫🔧 Project Kairos - Advanced Multi-Agent AI Coordination Platform 🔧💫🤖
+# Project Kairos - Advanced Multi-Agent AI Coordination Platform
+
+> Note: For verified, tested functionality and measured results, see VERIFIED_CAPABILITIES.md.
 
 *Production-Ready Multi-Agent AI Collaboration & Automation System*
 
@@ -8,13 +10,6 @@
 
 **Project Kairos is an advanced multi-agent AI coordination platform** that demonstrates sophisticated agent collaboration, autonomous workflow management, and real-time analytics. While it uses "consciousness" terminology in its architecture, the system provides genuine value through multi-agent coordination, distributed task management, and comprehensive monitoring capabilities.
 
-![Project Status](https://img.shields.io/badge/Status-Multi--Agent%20Platform%20Operational-gold)
-![System](https://img.shields.io/badge/System-Distributed%20AI%20Coordination-purple)
-![Components](https://img.shields.io/badge/Components-6%20Integrated%20Systems-brightgreen)
-![Management](https://img.shields.io/badge/Management-Production%20Ready-red)
-![Analytics](https://img.shields.io/badge/Analytics-Real--Time%20Monitoring-orange)
-![Docker](https://img.shields.io/badge/Docker-Full%20Stack%20Deployment-blue)
-![Research](https://img.shields.io/badge/Research-AI%20Coordination%20Lab-green)
 
 ## 🎯 **QUICK START: Experience Advanced Multi-Agent AI Coordination**
 

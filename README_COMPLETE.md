@@ -1,4 +1,6 @@
-# 🚀 KAIROS MULTI-AGENT AI COORDINATION PLATFORM 🚀
+# KAIROS MULTI-AGENT AI COORDINATION PLATFORM
+
+> Note: For verified, tested functionality and measured results, see VERIFIED_CAPABILITIES.md.
 
 ## Complete System Integration & Advanced Analytics Suite
 

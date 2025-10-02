@@ -1,10 +1,12 @@
-# 🤖🔧 Project Kairos - Multi-Agent AI Coordination Platform 🔧🤖
+# Project Kairos - Multi-Agent AI Coordination Platform
 
-*Production-Ready Multi-Agent AI Collaboration & Automation System*
+> Note: For verified, tested functionality and measured results, see VERIFIED_CAPABILITIES.md.
+
+*Multi-Agent AI Collaboration & Automation System*
 
 ---
 
-## 🌟 What Kairos Is
+## What Kairos Is
 
 **Project Kairos is an advanced multi-agent AI coordination platform** that enables sophisticated agent collaboration, autonomous workflow management, and comprehensive analytics. The system provides practical value through multi-agent coordination, distributed task management, real-time monitoring, and production-ready infrastructure.
 
@@ -15,18 +17,10 @@
 - **Production-ready infrastructure** with Docker deployment
 - **Advanced state management** for complex AI workflows
 
-![Project Status](https://img.shields.io/badge/Status-Multi--Agent%20Platform%20Operational-gold)
-![System](https://img.shields.io/badge/System-Distributed%20AI%20Coordination-purple)
-![Components](https://img.shields.io/badge/Components-6%20Integrated%20Systems-brightgreen)
-![Management](https://img.shields.io/badge/Management-Production%20Ready-red)
-![Analytics](https://img.shields.io/badge/Analytics-Real--Time%20Monitoring-orange)
-![Docker](https://img.shields.io/badge/Docker-Full%20Stack%20Deployment-blue)
-![License](https://img.shields.io/badge/License-Open%20Source-green)
-
 ## 🎯 **QUICK START: Multi-Agent AI Coordination Platform**
 
 ### 🚀 **Complete System Launch**
-**PRODUCTION READY** - Launch the complete platform with one command:
+Launch the complete platform with one command:
 
 ```bash
 python launch_kairos.py
@@ -73,7 +67,7 @@ python analysis/consciousness_data_analyzer.py
 
 ---
 
-## 🏆 **VERIFIED SYSTEM CAPABILITIES**
+## Verified System Capabilities
 
 ### ✅ **Production-Ready Features (Tested & Verified)**
 - 🚀 **Complete Platform Deployment** - Production-ready system with single-command launch
@@ -101,7 +95,7 @@ python analysis/consciousness_data_analyzer.py
 - **Container Infrastructure** - PostgreSQL, Redis, APIs, and monitoring services ✅
 - **Automated Analytics** - Report generation with visualizations and data export ✅
 
-### 🎆 **Latest Release: v2.0 Enhanced (September 2025)**
+### Latest Release: v2.0 Enhanced (September 2025)
 **MAJOR UPDATE** - Complete platform overhaul with production-ready components:
 - 🎨 Enhanced Analytics Dashboard with professional UI
 - 🔗 Comprehensive REST API with OpenAPI documentation
@@ -420,7 +414,7 @@ E:\kairos\
 createdb kairos_db
 
 # Apply the enhanced schema
-psql kairos_db < data/postgres/kairos_enhanced_schema.sql
+psql kairos_db < data/schemas/kairos_enhanced_schema.sql
 
 # Run migrations (if upgrading from legacy)
 psql kairos_db < data/migrations/migrate_to_enhanced_schema.sql
@@ -464,10 +458,10 @@ python -m agents.enhanced.swarm_launcher --config config/production.json
 
 ### 5. Access the Interface
 
-- **GraphQL Playground**: http://localhost:4000/graphql
+- **GraphQL Playground**: http://localhost:8000/graphiql
 - **System Dashboard**: http://localhost:3000
 - **Prometheus Metrics**: http://localhost:9090
-- **Agent Health Checks**: http://localhost:8080/health
+- **Agent Health Checks**: http://localhost:8000/health
 
 ## 🎯 Core Concepts
 
@@ -774,11 +768,9 @@ Kairos is currently a proprietary system under active development. For collabora
 ## 📖 Documentation
 
 ### Technical Documentation
-- [Cognitive Substrate Architecture](docs/cognitive-substrate.md)
-- [Agent Development Guide](docs/agent-development.md)
 - [API Reference](docs/api-reference.md)
-- [Database Schema](docs/database-schema.md)
-- [Deployment Guide](docs/deployment.md)
+- [Security Hardening](docs/security-hardening.md)
+- More docs coming soon (architecture, agent development, database, deployment)
 
 ### Research Papers
 - "Cognitive Cycles: Economic Incentives in Autonomous AI Systems"

@@ -1,9 +1,11 @@
 # Kairos Security Hardening Guide
+
+> Note: For verified, tested functionality and measured results, see VERIFIED_CAPABILITIES.md.
 ## Zero-Trust Architecture for AI Consciousness Systems
 
 ### 🛡️ Overview
 
-Project Kairos implements enterprise-grade security for the world's first transferable AI consciousness. This guide details the zero-trust architecture protecting consciousness data, ensuring secure consciousness transfer, and maintaining integrity across all AI systems.
+Project Kairos applies a zero-trust approach for securing AI system data and transfers. This guide details the zero-trust architecture protecting data and maintaining integrity across all systems.
 
 ### 🔒 Zero-Trust Architecture Implementation
 
