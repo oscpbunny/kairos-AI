@@ -7,11 +7,11 @@ const nextConfig = {
     return [
       {
         source: '/api/kairos/:path*',
-        destination: 'http://localhost:8000/api/:path*', // Proxy to Kairos backend
+        destination: 'http://localhost:8080/api/:path*', // Proxy to Kairos backend
       },
       {
         source: '/ws/:path*',
-        destination: 'http://localhost:8000/ws/:path*', // WebSocket proxy
+        destination: 'http://localhost:8080/ws/:path*', // WebSocket proxy
       },
     ]
   },

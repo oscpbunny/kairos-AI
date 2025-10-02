@@ -333,11 +333,11 @@ export function RealTimeChatInterface({ className = '' }: RealTimeChatInterfaceP
                   <div className="prose prose-sm max-w-none dark:prose-invert">
                     <ReactMarkdown
                       components={{
-                        code({ node, inline, className, children, ...props }) {
+                        code({ node, inline, className, children, ...props }: any) {
                           const match = /language-(\\w+)/.exec(className || '');
                           return !inline && match ? (
                             <SyntaxHighlighter
-                              style={dark}
+                              style={dark as any}
                               language={match[1]}
                               PreTag="div"
                               className="rounded-md"
